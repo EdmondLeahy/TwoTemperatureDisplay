@@ -30,6 +30,7 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 // Delay value for setup 
 double setup_delay = 0.5*1000;
 double t1, t2;
+double update_int = 0.5; // seconds
 // 33
 void setup(void)
 {
@@ -60,19 +61,11 @@ void setup(void)
 
 void loop(void)
 { 
-  // Keep previous temp
-  t1 = Sensors.getTempCByIndex(0);
-  t2 = Sensors.getTempCByIndex(1);
-  // Send the command to get temperatures
   Sensors.requestTemperatures(); 
-  // Find trend of values 
-  // Not Here Yet
-  // Print the values to the serial bus
+  // Print the values to the LCD
   print_all_data(Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
-  //Print trend
-  print_trend(t1, t2, Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
   //Update delay
-  delay(0.5*1000);
+  delay(update_int*1000);
 }
 
 /* 
@@ -110,7 +103,7 @@ int print_all_data(double t1, double t2)
 
   // Print the devider
   lcd.setCursor(20,1);
-  lcd.print("|")
+  lcd.print("|");
 
   // External
   if(t1 > 0) {
