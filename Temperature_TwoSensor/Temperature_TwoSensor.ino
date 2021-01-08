@@ -17,33 +17,33 @@ DallasTemperature Sensors(&oneWire);
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 // Delay value for setup 
-double setup_delay = 0.5;
+double setup_delay = 0.5*1000;
 double t1, t2;
 // 33
 void setup(void)
 {
   Serial.begin(9600); //Begin serial communication
   Sensors.begin();
-    // set up the LCD's number of columns and rows:
+  // set up the LCD's number of columns and rows:
   lcd.begin(40, 2);
   lcd.setCursor(8, 0);
   lcd.print("WELCOME TO ELLIE JEAN!");
   delay(1*1000); //Print welcome for 10 seconds
   lcd.setCursor(4, 1);
   lcd.print(".....Initializing surfmobile.....");
-  delay(setup_delay*1000);
+  delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print("..........Raising Sails..........");
-  delay(setup_delay*1000);
+  delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print("........Calculating geoid........");
-  delay(setup_delay*1000);
+  delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print("....Giving up and using WGS84....");
-  delay(setup_delay*1000);
+  delay(ssetup_delay);
   lcd.setCursor(4, 1);
   lcd.print(".........Gettin funky.........");
-  delay(setup_delay*1000);
+  delay(setup_delay);
   lcd.clear();
 }
 
