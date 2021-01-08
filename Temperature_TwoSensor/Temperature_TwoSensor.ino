@@ -1,7 +1,18 @@
 /* Arduino DS18B20 temp sensor tutorial
    More info: http://www.ardumotive.com/how-to-use-the-ds18b20-temperature-sensor-en.html
    Date: 19/6/2015 // www.ardumotive.com */
+/*
+                            _.-="_-         _
+                         _.-="   _-          | ||"""""""---._______     __..
+             ___.===""""-.______-,,,,,,,,,,,,`-''----" """""       """""  __'
+      __.--""     __        ,'    ELLIE JEAN     o \           __        [__|
+ __-""=======.--""  ""--.=================================.--""  ""--.=======:
+]       [w] : /        \ : |========================|    : /        \ :  [w] :
+V___________:|          |: |========================|    :|          |:   _-"
+ V__________: \        / :_|=======================/_____: \        / :__-"
+ -----------'  "-____-"  `-------------------------------'  "-____-"
 
+ */
 
 //Include libraries
 #include <OneWire.h>
@@ -40,7 +51,7 @@ void setup(void)
   delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print("....Giving up and using WGS84....");
-  delay(ssetup_delay);
+  delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print(".........Gettin funky.........");
   delay(setup_delay);
@@ -57,7 +68,6 @@ void loop(void)
   // Find trend of values 
   // Not Here Yet
   // Print the values to the serial bus
-  lcd.clear(); // Clear the screen (gets rid of artifacts)
   print_all_data(Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
   //Print trend
   print_trend(t1, t2, Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
@@ -65,44 +75,54 @@ void loop(void)
   delay(0.5*1000);
 }
 
+/* 
+
+
+|   Internal Temp:  |   External Temp:   |   
+|      +29.5 *C     |      -14.2 *C      |
+
+ 
+ */
 
 int print_all_data(double t1, double t2)
 {
-//  //Outside Temp
-  lcd.setCursor(15, 0);
-  lcd.print(t1);
+  // TOP ROW
+  //Inside Temp
+  lcd.setCursor(3, 0);
+  lcd.print("Internal Temp:   |");
+  //Outside Temp
+  lcd.setCursor(23,0);
+  lcd.print("External Temp:   ");
+
+  // BOTTOM ROW
+  // Internal
+  int index = 6;
+  if(t1 > 0) {
+    index = 7;
+  }
+  else{
+    index = 6;
+  }
+  lcd.setCursor(index,1);
+  lcd.print(t1,1);
   lcd.write((char)223);
   lcd.print(" C");
-  // Inside Temp
-  lcd.setCursor(15, 1);
-  lcd.print(t2);
-  lcd.write(223);
+
+  // Print the devider
+  lcd.setCursor(20,1);
+  lcd.print("|")
+
+  // External
+  if(t1 > 0) {
+    index = 26;
+  }
+  else{
+    index = 25;
+  }
+  lcd.setCursor(index,1);
+  lcd.print(t2,1);
+  lcd.write((char)223);
   lcd.print(" C");
+  
 	return 1;
-}
-
-int print_trend(double t1, double t2, double t1p, double t2p)
-{
-  lcd.setCursor(27, 0);
-  lcd.print(get_trend(t1, t1p));
-  lcd.setCursor(27, 1);
-  lcd.print(get_trend(t2, t2p));  
-}
-
-String get_trend(double t1, double t1p)
-{
-  String result;
- 	if(t1>t1p)
-   {
-    result = "and falling ";
-   }
-  else if(t1<t1p)
-  {
-   result = "and rising  ";
-  }
-  else
-  {
-   result = "and constant";
-  }
- 	return result;
 }
