@@ -40,7 +40,7 @@ void setup(void)
   lcd.begin(40, 2);
   lcd.setCursor(8, 0);
   lcd.print("WELCOME TO ELLIE JEAN!");
-  delay(1*1000); //Print welcome for 10 seconds
+  delay(1*1000); //Show the welcome screen
   lcd.setCursor(4, 1);
   lcd.print(".....Initializing surfmobile.....");
   delay(setup_delay);
@@ -77,7 +77,7 @@ void loop(void)
  
  */
 
-int print_all_data(double t1, double t2)
+void print_all_data(double t1, double t2)
 {
   // TOP ROW
   //Inside Temp
@@ -89,15 +89,11 @@ int print_all_data(double t1, double t2)
 
   // BOTTOM ROW
   // Internal
-  int index = 6;
+  lcd.setCursor(6,1);
   if(t1 > 0) {
-    index = 7;
+    lcd.print("+");
   }
-  else{
-    index = 6;
-  }
-  lcd.setCursor(index,1);
-  lcd.print(t1,1);
+  lcd.print(t2,1);
   lcd.write((char)223);
   lcd.print(" C");
 
@@ -106,16 +102,11 @@ int print_all_data(double t1, double t2)
   lcd.print("|");
 
   // External
+  lcd.setCursor(25,1);
   if(t1 > 0) {
-    index = 26;
+    lcd.print("+");
   }
-  else{
-    index = 25;
-  }
-  lcd.setCursor(index,1);
   lcd.print(t2,1);
   lcd.write((char)223);
   lcd.print(" C");
-  
-	return 1;
 }
