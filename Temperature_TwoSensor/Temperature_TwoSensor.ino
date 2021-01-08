@@ -57,28 +57,24 @@ void loop(void)
   // Find trend of values 
   // Not Here Yet
   // Print the values to the serial bus
-  lcd.setCursor(0, 0);
-  lcd.print("Outside Temp: ");
-  lcd.setCursor(0, 1);
-  lcd.print("Inside Temp: ");
+  lcd.clear(); // Clear the screen (gets rid of artifacts)
   print_all_data(Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
   //Print trend
   print_trend(t1, t2, Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
-  //Update value every 5 sec.
+  //Update delay
   delay(0.5*1000);
 }
+
 
 int print_all_data(double t1, double t2)
 {
 //  //Outside Temp
-//  lcd.setCursor(0, 0);
-//  lcd.print("Outside Temperature is: ");
   lcd.setCursor(15, 0);
   lcd.print(t1);
   lcd.write((char)223);
   lcd.print(" C");
+  // Inside Temp
   lcd.setCursor(15, 1);
-  //lcd.print("Inside Temperature is: ");
   lcd.print(t2);
   lcd.write(223);
   lcd.print(" C");
