@@ -19,8 +19,8 @@ V___________:|          |: |========================|    :|          |:   _-"
 #include <DallasTemperature.h>
 #include <LiquidCrystal.h>
 
-//Data wire is plugged into pin 2 on the Arduino
-#define ONE_WIRE_BUS 7
+//Data wire is plugged into pin 8 on the Arduino
+#define ONE_WIRE_BUS 8
 // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 OneWire oneWire(ONE_WIRE_BUS);
 // Pass our oneWire reference to Dallas Temperature. 
@@ -71,7 +71,7 @@ void loop(void)
 /* 
 
 
-|   Internal Temp:  |   External Temp:   |   
+|       Inside:     |       Outside:     |   
 |      +29.5 *C     |      -14.2 *C      |
 
  
