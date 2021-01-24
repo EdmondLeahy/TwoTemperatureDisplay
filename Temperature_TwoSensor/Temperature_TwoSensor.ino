@@ -81,10 +81,10 @@ void print_all_data(double t1, double t2)
 {
   // TOP ROW
   //Inside Temp
-  lcd.setCursor(3, 0);
+  lcd.setCursor(6, 0);
   lcd.print("Inside:");
   //Outside Temp
-  lcd.setCursor(23,0);
+  lcd.setCursor(26,0);
   lcd.print("Outside:");
 
   // BOTTOM ROW
@@ -110,16 +110,16 @@ void print_all_data(double t1, double t2)
 
   
   // Print the deviders
-  lcd.setCursor(1,0);
+  lcd.setCursor(0,0);
   lcd.print("|");
-  lcd.setCursor(1,1);
-  lcd.print("|");
-  lcd.setCursor(20,0);
+  lcd.setCursor(0,1);
   lcd.print("|");
   lcd.setCursor(20,0);
   lcd.print("|");
-  lcd.setCursor(40,0);
+  lcd.setCursor(20,1);
   lcd.print("|");
-  lcd.setCursor(40,1);
+  lcd.setCursor(39,0);
+  lcd.print("|");
+  lcd.setCursor(39,1);
   lcd.print("|");
 }
