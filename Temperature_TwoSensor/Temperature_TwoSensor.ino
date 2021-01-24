@@ -81,7 +81,7 @@ void print_all_data(double t1, double t2)
 {
   // TOP ROW
   //Inside Temp
-  lcd.setCursor(6, 0);
+  lcd.setCursor(8, 0);
   lcd.print("Inside:");
   //Outside Temp
   lcd.setCursor(26,0);
@@ -89,6 +89,8 @@ void print_all_data(double t1, double t2)
 
   // BOTTOM ROW
   // Internal
+  lcd.setCursor(6,1);
+  lcd.print("      ");
   lcd.setCursor(6,1);
   if(t1 > 0) {
     lcd.print("+");
@@ -100,6 +102,8 @@ void print_all_data(double t1, double t2)
 
 
   // External
+  lcd.setCursor(25,1);
+  lcd.print("      ");
   lcd.setCursor(25,1);
   if(t1 > 0) {
     lcd.print("+");
