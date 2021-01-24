@@ -51,7 +51,7 @@ void setup(void)
   lcd.print("........Calculating geoid........");
   delay(setup_delay);
   lcd.setCursor(4, 1);
-  lcd.print("....Giving up and using WGS84....");
+  lcd.print("....Giving up and using EGM96....");
   delay(setup_delay);
   lcd.setCursor(4, 1);
   lcd.print(".........Gettin funky.........");
