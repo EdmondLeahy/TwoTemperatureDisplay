@@ -79,6 +79,18 @@ void loop(void)
 
 void print_all_data(double t1, double t2)
 {
+  bool t1_bad = false;
+  bool t2_bad = false;
+  
+
+  // CHECK TEMPURATURES
+  if (t1 == 85 || t1 == -127){
+    t1_bad = true;
+  }
+  if (t2 == 85 || t2 == -127){
+    t2_bad = true;
+  }
+  
   // TOP ROW
   //Inside Temp
   lcd.setCursor(6, 0);
@@ -89,22 +101,33 @@ void print_all_data(double t1, double t2)
 
   // BOTTOM ROW
   // Internal
-  lcd.setCursor(6,1);
-  if(t1 > 0) {
-    lcd.print("+");
-  }
   // Inside
-  lcd.print(t2,1);
+  if (!t2_bad){
+    lcd.setCursor(6,1);
+    if(t1 > 0) {
+    lcd.print("+");
+    }
+    lcd.print(t2,1);
+  }
+  else{
+    lcd.print("--");
+  }
   lcd.write((char)223);
   lcd.print(" C");
 
 
   // External
   lcd.setCursor(25,1);
-  if(t1 > 0) {
+  if (!t1_bad){
+    lcd.setCursor(6,1);
+    if(t1 > 0) {
     lcd.print("+");
+    }
+    lcd.print(t1,1);
   }
-  lcd.print(t2,1);
+  else{
+    lcd.print("--");
+  }
   lcd.write((char)223);
   lcd.print(" C");
 
