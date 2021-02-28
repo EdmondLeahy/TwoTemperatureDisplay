@@ -67,6 +67,7 @@ void loop(void)
   // Print the values to the LCD
   Sensors.requestTemperatures();
   print_all_data(Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
+//  Serial.println(Sensors.getTempCByIndex(0));
   //Update delay
   delay(update_int*1000);
   
