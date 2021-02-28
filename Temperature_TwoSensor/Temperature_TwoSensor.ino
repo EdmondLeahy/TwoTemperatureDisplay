@@ -105,9 +105,6 @@ void print_all_data(double t1, double t2)
   }
   // Inside
   lcd.print(t1,1);
-  lcd.write((char)223);
-  lcd.print(" C       ");
-
 
   // External
   lcd.setCursor(25,1);
@@ -115,11 +112,6 @@ void print_all_data(double t1, double t2)
   lcd.setCursor(25,1);
   if(t2 > 0) {
     lcd.print("+ ");
-  }
-  lcd.print(t2,1);
-  lcd.write((char)223);
-  lcd.print(" C       ");
-
   
   // Print the deviders
   lcd.setCursor(0,0);
