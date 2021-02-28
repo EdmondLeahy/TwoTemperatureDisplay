@@ -104,7 +104,7 @@ void print_all_data(double t1, double t2)
     lcd.print("+ ");
   }
   // Inside
-  lcd.print(t1,1);
+  lcd.print(t1);
 
   // External
   lcd.setCursor(25,1);
@@ -113,6 +113,8 @@ void print_all_data(double t1, double t2)
   if(t2 > 0) {
     lcd.print("+ ");
   }
+  // Inside
+  lcd.print(t2);
   // Print the deviders
   lcd.setCursor(0,0);
   lcd.print("|");
