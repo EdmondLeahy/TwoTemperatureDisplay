@@ -30,8 +30,7 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 // Delay value for setup 
 double setup_delay = 0.5*1000;
 double t1, t2;
-double update_int = 1; // seconds
-int i = 0;
+double update_int = 0.5; // seconds
 // 33
 void setup(void)
 {
@@ -63,17 +62,10 @@ void setup(void)
 void loop(void)
 { 
   Sensors.requestTemperatures(); 
-  
   // Print the values to the LCD
-  Sensors.requestTemperatures();
   print_all_data(Sensors.getTempCByIndex(0), Sensors.getTempCByIndex(1));
   //Update delay
   delay(update_int*1000);
-  
-  i++;
-  if (i%300 == 0){
-    lcd.clear();
-  }
 }
 
 /* 
@@ -97,28 +89,28 @@ void print_all_data(double t1, double t2)
 
   // BOTTOM ROW
   // Internal
-  lcd.setCursor(7,1);
+  lcd.setCursor(6,1);
   lcd.print("      ");
-  lcd.setCursor(7,1);
+  lcd.setCursor(6,1);
   if(t1 > 0) {
-    lcd.print("+ ");
+    lcd.print("+");
   }
   // Inside
-  lcd.print(t1,1);
+  lcd.print(t2,1);
   lcd.write((char)223);
-  lcd.print(" C       ");
+  lcd.print(" C");
 
 
   // External
   lcd.setCursor(25,1);
   lcd.print("      ");
   lcd.setCursor(25,1);
-  if(t2 > 0) {
-    lcd.print("+ ");
+  if(t1 > 0) {
+    lcd.print("+");
   }
   lcd.print(t2,1);
   lcd.write((char)223);
-  lcd.print(" C       ");
+  lcd.print(" C");
 
   
   // Print the deviders
