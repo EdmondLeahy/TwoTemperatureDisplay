@@ -112,7 +112,7 @@ void print_all_data(double t1, double t2)
   lcd.setCursor(25,1);
   if(t2 > 0) {
     lcd.print("+ ");
-  
+  }
   // Print the deviders
   lcd.setCursor(0,0);
   lcd.print("|");
