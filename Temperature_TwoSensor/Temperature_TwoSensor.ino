@@ -87,18 +87,6 @@ void loop(void)
 
 void print_all_data(double t1, double t2)
 {
-  bool t1_bad = false;
-  bool t2_bad = false;
-  
-
-  // CHECK TEMPURATURES
-  if (t1 == 85 || t1 == -127){
-    t1_bad = true;
-  }
-  if (t2 == 85 || t2 == -127){
-    t2_bad = true;
-  }
-  
   // TOP ROW
   //Inside Temp
   lcd.setCursor(8, 0);
@@ -112,37 +100,19 @@ void print_all_data(double t1, double t2)
   lcd.setCursor(7,1);
   lcd.print("      ");
   lcd.setCursor(7,1);
-  if (!t1_bad){
-	  if(t1 > 0) {
-		lcd.print("+ ");
-	  }
-	  // Inside
-	  lcd.print(t1,1);
-	  lcd.write((char)223);
-	  lcd.print(" C       ");
+  if(t1 > 0) {
+    lcd.print("+ ");
   }
-  else{
-    lcd.print("--");
-  }
+  // Inside
+  lcd.print(t1,1);
 
   // External
   lcd.setCursor(25,1);
   lcd.print("      ");
   lcd.setCursor(25,1);
-  if (!t2_bad){
-  	if(t2 > 0) {
-  		lcd.print("+ ");
-  	}
-  	
-  	lcd.print(t2);
-  	lcd.write((char)223);
-  	lcd.print(" C       ");
-    }
-  else{
-    lcd.print("--");
+  if(t2 > 0) {
+    lcd.print("+ ");
   }
-
-  
   // Print the deviders
   lcd.setCursor(0,0);
   lcd.print("|");
