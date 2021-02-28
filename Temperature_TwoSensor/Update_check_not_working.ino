@@ -113,13 +113,13 @@ void print_all_data(double t1, double t2)
   lcd.print("      ");
   lcd.setCursor(7,1);
   if (!t1_bad){
-	  if(t1 > 0) {
-		lcd.print("+ ");
-	  }
-	  // Inside
-	  lcd.print(t1,1);
-	  lcd.write((char)223);
-	  lcd.print(" C       ");
+    if(t1 > 0) {
+    lcd.print("+ ");
+    }
+    // Inside
+    lcd.print(t1,1);
+    lcd.write((char)223);
+    lcd.print(" C       ");
   }
   else{
     lcd.print("--");
@@ -130,14 +130,14 @@ void print_all_data(double t1, double t2)
   lcd.print("      ");
   lcd.setCursor(25,1);
   if (!t2_bad){
-  	if(t2 > 0) {
-  		lcd.print("+ ");
-  	}
-  	
-  	lcd.print(t2);
-  	lcd.write((char)223);
-  	lcd.print(" C       ");
-    }
+  if(t2 > 0) {
+    lcd.print("+ ");
+  }
+  
+  lcd.print(t2);
+  lcd.write((char)223);
+  lcd.print(" C       ");
+  }
   else{
     lcd.print("--");
   }
