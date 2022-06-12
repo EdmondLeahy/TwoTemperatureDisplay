@@ -1,0 +1,4 @@
+Automatically\ import\ libraries=true
+Private\ Library\ Path=/home/edmond/Arduino/libraries
+Private\ hardware\ Path=/home/edmond/Arduino/hardware
+eclipse.preferences.version=1

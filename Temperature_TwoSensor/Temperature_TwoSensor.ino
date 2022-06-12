@@ -124,7 +124,8 @@ void print_all_data(double t1, double t2)
     lcd.print("+ ");
     }
     // Inside
-    lcd.print(t1);
+    //lcd.print(t1); UNCOMMENT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    lcd.print('test');
     lcd.write((char)223);
     lcd.print(" C       ");
   }
@@ -141,7 +142,8 @@ void print_all_data(double t1, double t2)
       lcd.print("+ ");
     }
   
-    lcd.print(t2);
+    //lcd.print(t2);UNCOMMENT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    lcd.print('test');
     lcd.write((char)223);
     lcd.print(" C       ");
   }
